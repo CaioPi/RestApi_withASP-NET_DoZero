@@ -52,6 +52,9 @@ namespace Rest_ASP_Net
             //injeção de dependencia
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
             services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
+
+            services.AddScoped<IBookBusiness, BookBusinessImplementation>();
+            services.AddScoped<IBookRepository, BookRepositoryImplementation>();
         }
 
         private static void MigrateDatabase(string connection)
