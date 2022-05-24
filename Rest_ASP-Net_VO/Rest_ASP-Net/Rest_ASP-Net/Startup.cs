@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using Rest_ASP_Net.Repository;
 using Serilog;
 using Rest_ASP_Net.Repository.Generic;
+using System.Net.Http.Headers;
 
 namespace Rest_ASP_Net
 {
@@ -46,6 +47,17 @@ namespace Rest_ASP_Net
 
             }
 
+            services.AddMvc(options =>
+            {
+                options.RespectBrowserAcceptHeader = true;
+
+                options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml").ToString());
+
+                options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json").ToString());
+
+            })
+            .AddXmlSerializerFormatters();
+
             //versioning api
             services.AddApiVersioning();
 
@@ -75,7 +87,7 @@ namespace Rest_ASP_Net
             catch (Exception ex)
             {
 
-                Log.Error("Dataase migration failed", ex);
+                Log.Error("Database migration failed", ex);
                 throw;
 
             }
