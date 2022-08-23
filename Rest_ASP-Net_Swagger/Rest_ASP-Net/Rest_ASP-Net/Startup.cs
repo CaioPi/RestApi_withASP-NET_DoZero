@@ -38,7 +38,13 @@ namespace Rest_ASP_Net
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //Habilitando serviço CORS
+            services.AddCors(options => options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            }));
 
             services.AddControllers();
 
@@ -131,7 +137,12 @@ namespace Rest_ASP_Net
 
                 app.UseRouting();
 
+            //Habilitando CORS, SEMPRE deve ficar depois de
+            //"app.UseHttpsRedirection();" e "app.UseRouting();", e também antes de app.UseEndpoints
+            app.UseCors();    
+
                 app.UseSwagger();
+
                 
                 app.UseSwaggerUI(c =>
                 {

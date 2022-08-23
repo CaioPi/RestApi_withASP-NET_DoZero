@@ -28,6 +28,10 @@ namespace Rest_ASP_Net.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType((200), Type = typeof(List<BookVO>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         public IActionResult Get()
         {
 
@@ -37,6 +41,10 @@ namespace Rest_ASP_Net.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType((200), Type = typeof(BookVO))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         public IActionResult Get(long id)
         {
 
@@ -51,6 +59,10 @@ namespace Rest_ASP_Net.Controllers
 
         }
         [HttpPost]
+        [ProducesResponseType((200), Type = typeof(BookVO))]
+
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         public IActionResult Post_Create([FromBody] BookVO book)
         {
 
@@ -59,6 +71,9 @@ namespace Rest_ASP_Net.Controllers
 
         }
         [HttpPut]
+        [ProducesResponseType((200), Type = typeof(BookVO))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         public IActionResult Put_Update([FromBody] BookVO book)
         {
 
@@ -67,6 +82,10 @@ namespace Rest_ASP_Net.Controllers
 
         }
         [HttpDelete("{id}")]
+        [ProducesResponseType((200), Type = typeof(BookVO))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         public IActionResult Delete_Delete(long id)
         {
 
